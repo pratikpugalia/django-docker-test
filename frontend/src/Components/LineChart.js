@@ -8,15 +8,19 @@ const LineChart = ({ data }) => {
     xField: "month",
     yField: "headcount",
     seriesField: "company",
-    // yAxis: {
-    //   label: {
-    //     formatter: function formatter(v) {
-    //       return "".concat(v).replace(/\d{1,3}(?=(\d{3})+$)/g, function (s) {
-    //         return "".concat(s, ",");
-    //       });
-    //     },
-    //   },
-    // },
+    point: {
+      size: 2.5,
+      shape: 'diamond',
+    },
+    yAxis: {
+      label: {
+        formatter: function formatter(v) {
+          return "".concat(v).replace(/\d{1,3}(?=(\d{3})+$)/g, function (s) {
+            return "".concat(s, ",");
+          });
+        },
+      },
+    },
     color: ["#1979C9", "#D62A0D", "#FAA219"],
   };
 
