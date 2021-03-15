@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+d import React, { useEffect, useState } from "react";
 import { Select } from "antd";
 import LineChart from "./LineChart";
 
@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   const asyncFetchChartData = (data) => {
     fetch(
-      "http://server:8000/api/companies/data", {method: 'POST', body : JSON.stringify(data)}
+      "http://localhost:8000/api/companies/data", {method: 'POST', body : JSON.stringify(data)}
     )
       .then((response) => response.json())
       .then((json) => setChartData(json))
@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   const asyncFetchCompanies = () => {
     fetch(
-      "http://server:8000/api/companies",
+      "http://localhost:8000/api/companies",
     )
       .then((response) => response.json())
       .then((json) => setCompanyOptions(json))
