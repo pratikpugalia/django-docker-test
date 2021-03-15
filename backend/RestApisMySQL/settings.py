@@ -39,11 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Django REST framework 
     'rest_framework',
-    # Tutorials application 
-    'tutorials.apps.TutorialsConfig',
+    # companyData application 
+    'companyData.apps.CompanyDataConfig',
     # CORS
     'corsheaders',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,12 +58,12 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
  
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8081',
 )
 
-ROOT_URLCONF = 'bzkRestApisMySQL.urls'
+ROOT_URLCONF = 'RestApisMySQL.urls'
 
 TEMPLATES = [
     {
@@ -80,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bzkRestApisMySQL.wsgi.application'
+WSGI_APPLICATION = 'RestApisMySQL.wsgi.application'
 
 
 # Database

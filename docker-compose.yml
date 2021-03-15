@@ -1,0 +1,51 @@
+version: '3'
+
+services: 
+  db:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    environment:
+       MYSQL_DATABASE: 'testdb'
+       MYSQL_PASSWORD: '123456'
+       MYSQL_ROOT_PASSWORD: '123456'
+    volumes:
+      - .setup.sql:/docker-entrypoint-initbd.d/setup.sql
+
+  server:
+    build: ./backend/.
+    command: python ./backend/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - migration
+    links: 
+      - db 
+  
+  migration:
+    build: ./backend/.
+    command: python ./backend/manage.py migrate --noinput
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+
+  data_population:
+    build: ./backend/.
+    command: python ./backend/manage.py importcsv
+    volumes:
+      - .:/code
+    depends_on:
+      - migration
+  
+  web_server:
+    build: ./frontend/.
+    command: npm start --prefix ./frontend/
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/data/app
+    depends_on:
+      - data_population

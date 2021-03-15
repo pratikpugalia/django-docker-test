@@ -12,12 +12,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Tutorial',
+            name='CompanyData',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='', max_length=70)),
-                ('description', models.CharField(default='', max_length=200)),
-                ('published', models.BooleanField(default=False)),
+                ('company', models.CharField(max_length=500, blank=False, default='')),
+                ('month', models.DateTimeField()),
+                ('headcount', models.FloatField()),
             ],
         ),
     ]
