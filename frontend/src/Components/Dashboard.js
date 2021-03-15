@@ -1,11 +1,8 @@
-d import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Select } from "antd";
 import LineChart from "./LineChart";
 
-const { Option } = Select;
-
 const Dashboard = () => {
-  const [companies, setCompanies] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [companyOptions, setCompanyOptions] = useState([]);
 
